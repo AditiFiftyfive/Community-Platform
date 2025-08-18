@@ -1,0 +1,294 @@
+{
+  "Events": [
+    { 
+      "id": 1, 
+      "commonId": 101,
+      "title": "Crochet | Community",
+      "subtitle": "Convention Center, Delhi", 
+      "date": "11 Aug - 31 Aug, 12PM",
+      "price": "₹590 onwards", 
+      "bgImage": "https://today.emich.edu/imgs/story/img12778_story-20240726105518.jpg",
+      "category": "Wellness" 
+    },
+    { 
+      "id": 2, 
+      "commonId": 102,
+      "title": "The Kindness Meal", 
+      "subtitle": "Parimal Gardens, Bangalore", 
+      "date": "15 Sep - 17 Sep, 10AM", 
+      "price": "₹1,200 onwards", 
+      "bgImage": "https://curlytales.com/wp-content/uploads/2024/02/The-Kindness-Meal-800x450.jpg", 
+      "category": "CULTURE & FOOD" 
+    },
+    { 
+      "id": 3, 
+      "commonId": 103,
+      "title": "Kythera Jams", 
+      "subtitle": "Prarthana Yoga Studio, Jaipur", 
+      "date": "Every Thursday, 7:30PM", 
+      "price": "₹800 onwards", 
+      "bgImage": "https://ts-production.imgix.net/images/fa8a8355-c8bd-4d80-b545-b50575f01dc7.jpg?auto=compress,format&w=800&h=450", 
+      "category": "Entertainment" 
+    },
+    {
+      "id": 4,
+      "commonId": 104,
+      "title": "Chandigarh Cycling Challenge",
+      "subtitle": "Sukhna Lake, Chandigarh",
+      "date": "Every Sunday, 6AM",
+      "price": "₹350 onwards",
+      "bgImage": "https://www.activeessex.org/wp-content/uploads/2024/04/IMG-20240217-WA0003.jpg",
+      "category": "Sports"
+    },
+    {
+      "id": 5,
+      "commonId": 105,
+      "title": "Brews & Shoes Run Club",
+      "subtitle": "Riverfront, Ahmedabad",
+      "date": "Every Saturday, 5:30AM",
+      "price": "₹200 onwards",
+      "bgImage": "https://thebridge.in/wp-content/uploads/2020/10/A-still-from-Airtel-Delhi-Half-Marathon.jpg",
+      "category": "Running"
+    },
+    { 
+      "id": 6, 
+      "commonId": 106,
+      "title": "Jaipur Trekking Community", 
+      "subtitle": "Hawa Mahal, Jaipur", 
+      "date": "Every Sunday, 4AM", 
+      "price": "₹450 onwards", 
+      "bgImage": "https://trekkingmantra.com/uploads/ddb34ad69cea018a6ab53372779ecc8a.jpg?v=1789427477", 
+      "category": "Fitness & Outdoors"
+    },
+    {
+      "id": 7,
+      "commonId": 107,
+      "title": "Urban Sketchers Meetup",
+      "subtitle": "Lalbagh Botanical Garden, Bangalore",
+      "date": "Every Saturday, 5PM",
+      "price": "₹300 onwards",
+      "bgImage": "https://www.whereismrwong.com/wp-content/uploads/2019/06/20181027_043230-1024x768.jpg",
+      "category": "Arts & Creativity"
+    },
+    {
+      "id": 8,
+      "commonId": 108,
+      "title": "Tech Talks Community",
+      "subtitle": "Innovate Hub, Mumbai",
+      "date": "20 Sep, 6PM - 9PM",
+      "price": "₹700 onwards",
+      "bgImage": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&w=800&h=450",
+      "category": "Technology"
+    },
+    {
+      "id": 9,
+      "commonId": 109,
+      "title": "Mindful Movements",
+      "subtitle": "Marine Drive, Mumbai",
+      "date": "Every Monday & Wednesday, 6AM",
+      "price": "₹500 onwards",
+      "bgImage": "https://yogadeck.com/wp-content/uploads/2025/07/YogaDeck_2_25-1867-1-2048x1463.jpg",
+      "category": "Wellness"
+    },
+    {
+      "id": 10,
+      "commonId": 110,
+      "title": "Photography Explorers",
+      "subtitle": "Connaught Place, Delhi",
+      "date": "Every Sunday, 7AM",
+      "price": "₹400 onwards",
+      "bgImage": "https://iiscgym.iisc.ac.in/clubs/img/photography/photography_7.jpg",
+      "category": "Arts & Photography"
+    },
+    {
+      "id": 11,
+      "commonId": 111,
+      "title": "Culinary Adventures Club",
+      "subtitle": "Old Town Market, Pune",
+      "date": "12 Oct, 11AM - 3PM",
+      "price": "₹1,000 onwards",
+      "bgImage": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/13/c4/74/bd.jpg",
+      "category": "Food & Culture"
+    }
+  ],
+
+  "Communities": [
+    {
+      "id": 1,
+      "commonId": 102,
+      "name": "Mumbai Street Food Explorers",
+      "location": "Mumbai, Maharashtra",
+      "category": "FOOD",
+      "subcategories": ["STREET FOOD", "CULTURE", "SOCIAL"],
+      "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&h=400&fit=crop",
+      "builder": "Priya Sharma",
+      "color": "bg-orange-500",
+      "members": "4.8K"
+    },
+    {
+      "id": 2,
+      "commonId": 107,
+      "name": "Lucknow Arts & Crafts Guild",
+      "location": "Lucknow, Uttar Pradesh",
+      "category": "ART",
+      "subcategories": ["HANDICRAFTS", "TRADITIONAL", "CULTURE"],
+      "image": "https://c7.alamy.com/comp/2CWD2P1/local-crafts-people-selling-their-wares-in-the-amazon-nature-park-amazon-basin-loreto-peru-2CWD2P1.jpg",
+      "builder": "Shabana Khan",
+      "color": "bg-rose-500",
+      "members": "1.8K"
+    },
+    { 
+      "id": 16, 
+      "name": "Jaipur Photography Club", 
+      "location": "Jaipur, Rajasthan", 
+      "category": "PHOTOGRAPHY", 
+      "subcategories": ["HERITAGE", "STREET", "PORTRAIT"], 
+      "image": "https://images.pexels.com/photos/2764364/pexels-photo-2764364.jpeg?_gl=1*1frzcjf*_ga*MTM0OTQ1ODY2NS4xNzUzMDc4NTY4*_ga_8JE65Q40S6*czE3NTQ5MTgzMzUkbzckZzEkdDE3NTQ5MTgzNTEkajQ0JGwwJGgw", 
+      "builder": "Arjun Rathore", 
+      "color": "bg-pink-500", 
+      "members": "2.9K" 
+    },
+    { 
+      "id": 15, 
+      "name": "Kerala Spice Gardens Network", 
+      "location": "Kochi, Kerala", 
+      "category": "AGRICULTURE", 
+      "subcategories": ["SPICES", "ORGANIC", "FARMING"], 
+      "image": "https://www.honeymoonbug.com/blog/wp-content/uploads/2022/07/Cinnamon-Gardens-Spices-Plantation-kerala.jpg", 
+      "builder": "Maya Nair", 
+      "color": "bg-emerald-500", 
+      "members": "1.6K" 
+    },
+    {
+      "id": 3,
+      "commonId": 110,
+      "name": "Delhi Heritage Walks",
+      "location": "New Delhi, Delhi",
+      "category": "HISTORY",
+      "subcategories": ["HERITAGE", "WALKING", "CULTURE"],
+      "image": "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=400&fit=crop",
+      "builder": "Ananya Singh",
+      "color": "bg-amber-600",
+      "members": "3.4K"
+    },
+    {
+      "id": 4,
+      "commonId": 106,
+      "name": "Jaipur Trekking Community",
+      "location": "Hawa Mahal, Jaipur",
+      "category": "Fitness & Outdoors",
+      "subcategories": ["TREKKING", "WALKING", "TRAIL RUNNING"],
+      "image": "https://trekkingmantra.com/uploads/ddb34ad69cea018a6ab53372779ecc8a.jpg?v=1789427477",
+      "builder": "Pranay Sharma",
+      "color": "bg-amber-600",
+      "members": "3.4K"
+    },
+    {
+      "id": 5,
+      "commonId": 103,
+      "name": "Music Circle",
+      "location": "Boston, MA",
+      "category": "MUSIC",
+      "subcategories": ["DANCING", "CARNATIC", "PERFORMANCE"],
+      "image": "https://framerusercontent.com/images/sKJBEh34z8FAyZG6LvXU5sQwKQ.jpg",
+      "builder": "Harry Johnson",
+      "color": "bg-purple-500",
+      "members": "2.7K"
+    },
+    {
+      "id": 6,
+      "commonId": 104,
+      "name": "Goa Beach Volleyball Club",
+      "location": "Goa, India",
+      "category": "SPORTS",
+      "subcategories": ["VOLLEYBALL", "BEACH", "FITNESS"],
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/5b/2b/28/caption.jpg?w=1400&h=800&s=1",
+      "builder": "Rohan D'Souza",
+      "color": "bg-teal-500",
+      "members": "1.9K"
+    },
+    {
+      "id": 7,
+      "commonId": 102,
+      "name": "The Kindless Meal",
+      "location": "Hyderabad, Telangana",
+      "category": "FOOD",
+      "subcategories": ["VEGGIES", "HOME GROWN", "TASTE"],
+      "image": "https://curlytales.com/wp-content/uploads/2024/02/The-Kindness-Meal-800x450.jpg",
+      "builder": "Dipali",
+      "color": "bg-yellow-600",
+      "members": "3.8K"
+    },
+    {
+      "id": 8,
+      "commonId": 106,
+      "name": "Pune Adventure Trekkers",
+      "location": "Pune, Maharashtra",
+      "category": "ADVENTURE",
+      "subcategories": ["TREKKING", "SAHYADRI", "OUTDOOR"],
+      "image": "https://images.pexels.com/photos/33389273/pexels-photo-33389273.jpeg",
+      "builder": "Vikram Patil",
+      "color": "bg-green-600",
+      "members": "5.5K"
+    },
+    {
+      "id": 10,
+      "commonId": 105,
+      "name": "Brews and Shoes Run Club",
+      "location": "Ahmedabad, Gujarat",
+      "category": "Running",
+      "subcategories": ["RUNNING", "HEALTH", "LIVING"],
+      "image": "https://www.bpmcdn.com/f/files/victoria/2025-august/250801-vne-runclubs.jpg;w=960",
+      "builder": "Mohit Doshi",
+      "color": "bg-blue-600",
+      "members": "4.3K"
+    },
+    {
+      "id": 11,
+      "commonId": 109,
+      "name": "Mindful Movements Yoga Circle",
+      "location": "Jaipur, Rajasthan",
+      "category": "WELLNESS",
+      "subcategories": ["YOGA", "MEDITATION", "HEALTH"],
+      "image": "https://images.pexels.com/photos/8613313/pexels-photo-8613313.jpeg",
+      "builder": "Meera",
+      "color": "bg-violet-500",
+      "members": "3.1K"
+    },
+    {
+      "id": 12,
+      "commonId": 104,
+      "name": "Chandigarh Cycling Enthusiasts",
+      "location": "Chandigarh, India",
+      "category": "SPORTS",
+      "subcategories": ["CYCLING", "FITNESS", "ENVIRONMENT"],
+      "image": "https://usercontent.one/wp/cycleclub.london/wp-content/uploads/2024/03/Altea-2024-16.jpeg",
+      "builder": "Hardeep Singh",
+      "color": "bg-cyan-500",
+      "members": "2.2K"
+    },
+    {
+      "id": 13,
+      "commonId": 108,
+      "name": "Bangalore Tech Innovators",
+      "location": "Bangalore, Karnataka",
+      "category": "TECHNOLOGY",
+      "subcategories": ["STARTUP", "AI", "CODING"],
+      "image": "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=400&fit=crop",
+      "builder": "Rajesh Kumar",
+      "color": "bg-blue-500",
+      "members": "6.2K"
+    },
+    {
+      "id": 14,
+      "name": "Kolkata Book Lovers Society",
+      "location": "Kolkata, West Bengal",
+      "category": "BOOKS",
+      "subcategories": ["LITERATURE", "BENGALI", "DISCUSSION"],
+      "image": "https://imgmediagumlet.lbb.in/media/2023/06/6481ac390921233807b71066_1686219833251.jpg",
+      "builder": "Soma Chatterjee",
+      "color": "bg-indigo-500",
+      "members": "4.1K"
+    }
+  ]
+}
