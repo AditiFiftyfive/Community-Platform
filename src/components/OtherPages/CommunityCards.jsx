@@ -5,7 +5,6 @@ import Header from '../pages/Header';
 import api from "../../api/axios";
 
 
-
 const Community = () => {
   const [communities, setCommunities] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +52,86 @@ const Community = () => {
         </h2>
       </div>
 
+      <div className="w-full px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {communities.map((c) => (
+            <div
+              key={c.id}
+              className="w-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105"
+            >
+              {/* Image + title */}
+              <div className="relative h-48 sm:h-56 md:h-64">
+                <img src={c.image} alt={c.name} className="w-full h-full object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div
+                      className={`w-6 sm:w-8 h-6 sm:h-8 ${c.color} rounded-full flex items-center justify-center`}
+                    >
+                      <Users size={14} className="sm:w-4 sm:h-4 text-white" />
+                    </div>
+                    <h3 className="text-white font-bold text-sm sm:text-base md:text-lg line-clamp-2">
+                      {c.name}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-1 text-white/90 text-xs sm:text-sm mb-2">
+                    <MapPin size={12} className="sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                    <span className="truncate">{c.location}</span>
+                  </div>
+                </div>
+              </div>
 
+              {/* Details */}
+              <div className="p-4 sm:p-5 md:p-6">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                  <span
+                    className={`px-2 sm:px-3 py-1 ${c.color} text-white text-xs font-medium rounded-full`}
+                  >
+                    {c.category}
+                  </span>
+                  {c.subcategories.slice(0, 2).map((sub, i) => (
+                    <span
+                      key={i}
+                      className="px-2 sm:px-3 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full"
+                    >
+                      {sub}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <div className="min-w-0 flex-1 mr-4">
+                    <p className="text-gray-600 text-xs sm:text-sm">Builder:</p>
+                    <p className="font-semibold text-gray-800 text-sm sm:text-base truncate">
+                      {c.builder}
+                    </p>
+                  </div>
+                  <div className="text-right flex-shrink-0">
+                    <p className="text-gray-600 text-xs sm:text-sm">Members</p>
+                    <p className="font-bold text-gray-800 text-sm sm:text-base">{c.members}</p>
+                  </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <button
+                    onClick={() => handleAction("Exploring", c.name)}
+                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base"
+                  >
+                    Explore Now
+                  </button>
+                  <button
+                    onClick={() => handleAction("Joining", c.name)}
+                    className="flex-1 bg-black hover:bg-gray-800 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
+                  >
+                    Join Now
+                    <ArrowRight size={14} className="sm:w-4 sm:h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
@@ -61,12 +139,12 @@ const Community = () => {
 
 const DiscoverEvents = () => {
   const categories = [
-    { name: 'AI', events: '2K Events', bgColor: 'bg-[#D6D1B1]', color: 'pink' },
-    { name: 'Arts & Culture', events: '675 Events', bgColor: 'bg-[#C6D8D3]', color: 'yellow' },
-    { name: 'Climate', events: '423 Events', bgColor: 'bg-[#C4B89F]', color: 'green' },
-    { name: 'Fitness', events: '785 Events', bgColor: 'bg-[#E5CED8]', color: 'orange' },
-    { name: 'Wellness', events: '994 Events', bgColor: 'bg-[#D3C0D2]', color: 'cyan' },
-    { name: 'Crypto', events: '1K Events', bgColor: 'bg-[#B9CEB2]', color: 'purple' }
+    { name: 'AI', events: '2K Events', bgColor: 'bg-[#D6D1B1]' },
+    { name: 'Arts & Culture', events: '675 Events', bgColor: 'bg-[#C6D8D3]' },
+    { name: 'Climate', events: '423 Events', bgColor: 'bg-[#C4B89F]' },
+    { name: 'Fitness', events: '785 Events', bgColor: 'bg-[#E5CED8]' },
+    { name: 'Wellness', events: '994 Events', bgColor: 'bg-[#D3C0D2]' },
+    { name: 'Crypto', events: '1K Events', bgColor: 'bg-[#B9CEB2]' }
   ];
 
   return (

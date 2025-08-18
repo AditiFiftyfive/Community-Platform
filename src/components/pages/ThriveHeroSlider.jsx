@@ -9,7 +9,6 @@ const ThriveHeroSlider = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch events from API
   useEffect(() => {
     api.get("/Events")
       .then(response => {
@@ -17,7 +16,6 @@ const ThriveHeroSlider = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error(err);
         setLoading(false);
       });
   }, []);
