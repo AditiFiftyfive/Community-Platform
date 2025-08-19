@@ -1,8 +1,8 @@
 import {  Users, Calendar, DollarSign, MessageSquare, ArrowRight } from 'lucide-react';
-import { PhoneMockup, TicketCard, ProfileCard, SocialProofBanner } from './PhoneMockUp';
-import Footer from './Footer';
+import { PhoneMockup, TicketCard, ProfileCard, SocialProofBanner } from '../../components/PhoneMockUp';
+import Footer from '../../components/Footer';
 import ThriveHeroSlider from './ThriveHeroSlider';  
-import Header from './Header';
+import Header from './Navbar/Header';
 
 // Hero Section
 const HeroSection = () => {

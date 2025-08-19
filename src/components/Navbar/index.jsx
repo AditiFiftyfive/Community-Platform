@@ -1,9 +1,9 @@
 import { Link, useLocation  } from "react-router-dom";
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
-import SignIn from './SignIn';
+import SignIn from '../../pages/SignIn';
 
-const Header = () => {
+const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const location = useLocation();
 
@@ -62,4 +62,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

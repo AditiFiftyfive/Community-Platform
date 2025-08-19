@@ -1,8 +1,8 @@
 import { ArrowRight, Share2, Users, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from "react";
-import Footer from '../pages/Footer';
-import Header from '../pages/Header';
-import api from "../../api/axios";
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
+import api from "../../api";
 
 
 const Community = () => {
@@ -178,11 +178,11 @@ const DiscoverEvents = () => {
   );
 };
 
-const CommunityCards = () => {
+const DiscoverPage = () => {
   return (
      <div className="min-h-screen bg-white">
       <div className="overflow-y-auto">
-        <Header />
+        <Navbar />
         <DiscoverEvents />
         <Community />
         <Footer />
@@ -192,4 +192,4 @@ const CommunityCards = () => {
 };
 
 
-export default CommunityCards;
+export default DiscoverPage;

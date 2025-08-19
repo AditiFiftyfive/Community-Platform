@@ -1,9 +1,9 @@
 import React from 'react'
-export { PhoneMockup, TicketCard, ProfileCard, SocialProofBanner };
+export { PhoneMockUp, TicketCard, ProfileCard, SocialProofBanner };
 
 
 // Phone Mockup Component
-const PhoneMockup = () => {
+const PhoneMockUp = () => {
   return (
     
     <div className="relative mt-8 sm:mt-10 md:mt-12">
@@ -179,4 +179,4 @@ const SocialProofBanner = () => {
   );
 };
 
-export default PhoneMockup;
+export default PhoneMockUp;

@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, Users, Calendar, MapPin } from 'lucide-react';
-import api from "../../api/axios";
+import api from "../../api";
 
 
-const ThriveHeroSlider = () => {
+const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/Events")
-      .then(response => {
-        setEvents(response.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setLoading(false);
-      });
-  }, []);
+  const fetchEvents = async () => {
+    try {
+      const response = await api.get("/Events");
+      setEvents(response.data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchEvents();
+}, []);
 
   // Auto-slide functionality
   useEffect(() => {
@@ -158,4 +162,4 @@ const ThriveHeroSlider = () => {
   );
 };
 
-export default ThriveHeroSlider;
+export default HeroSlider;
