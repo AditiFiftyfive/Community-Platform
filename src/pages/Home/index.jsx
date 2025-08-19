@@ -1,8 +1,10 @@
 import {  Users, Calendar, DollarSign, MessageSquare, ArrowRight } from 'lucide-react';
 import { PhoneMockup, TicketCard, ProfileCard, SocialProofBanner } from '../../components/PhoneMockUp';
 import Footer from '../../components/Footer';
-import ThriveHeroSlider from './ThriveHeroSlider';  
-import Header from './Navbar/Header';
+import HeroSlider from "../../components/HeroSlider";
+import Navbar from "../Navbar";
+
+
 
 // Hero Section
 const HeroSection = () => {
@@ -109,13 +111,13 @@ const FeaturesPreview = () => {
 };
 
 // Main App Component
-const ThriveLandingPage = () => {
+const Home = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Navbar />
       <div className="overflow-y-auto">
         <HeroSection />
-        <ThriveHeroSlider />
+        <HeroSlider />
         <FeaturesPreview />
         <Footer />
       </div>
@@ -123,4 +125,4 @@ const ThriveLandingPage = () => {
   );
 };
 
-export default ThriveLandingPage;
+export default Home;

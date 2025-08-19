@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../api/axios";
+import api from "../../api/axios";
 
 export default function CommunityEvents() {
   const [events, setEvents] = useState([]);

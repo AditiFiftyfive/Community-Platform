@@ -1,8 +1,8 @@
 import './index.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ThriveLandingPage from './components/pages/ThriveLandingPage';
-import CommunityCards from "./components/OtherPages/CommunityCards";
-import communityEvents from "./components/communityEvents";
+import Home from './pages/Home';
+import CommunityEvents from './pages/CommunityEvents';
+import DiscoverPage from './pages/DiscoverPage';
 
 export default function App() {
   return (
@@ -10,9 +10,9 @@ export default function App() {
       <div className="min-h-screen font-sans">
         
         <Routes>
-          <Route path="/events" element={<communityEvents />} />
-          <Route path="/" element={<ThriveLandingPage />} />
-          <Route path="/discover" element={<CommunityCards />} />
+          <Route path="/events" element={<CommunityEvents />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/discover" element={<DiscoverPage />} />
         </Routes>
       </div>
     </Router>
