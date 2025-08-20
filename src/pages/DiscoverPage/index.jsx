@@ -1,8 +1,8 @@
 import { ArrowRight, Share2, Users, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from "react";
 import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
 import api from "../../api";
+import Navbar from './../../components/Navbar';
 
 
 const Community = () => {
@@ -184,7 +184,7 @@ const DiscoverPage = () => {
       <div className="overflow-y-auto">
         <Navbar />
         <DiscoverEvents />
-        <Community />
+        <Community /> 
         <Footer />
       </div>
     </div>

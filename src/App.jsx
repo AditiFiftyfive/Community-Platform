@@ -2,7 +2,8 @@ import './index.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import CommunityEvents from './pages/CommunityEvents';
-import DiscoverPage from './pages/DiscoverPage/Index.jsx';
+import DiscoverPage from './pages/DiscoverPage';
+
 
 export default function App() {
   return (

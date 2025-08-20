@@ -2,7 +2,7 @@ import {  Users, Calendar, DollarSign, MessageSquare, ArrowRight } from 'lucide-
 import { PhoneMockUp, TicketCard, ProfileCard, SocialProofBanner } from '../../components/PhoneMockUp';
 import Footer from '../../components/Footer';
 import HeroSlider from "../../components/HeroSlider";
-import Navbar from "../Navbar/Index.jsx";
+import Navbar from '../../components/Navbar';
 
 
 
