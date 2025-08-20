@@ -1,8 +1,8 @@
 import {  Users, Calendar, DollarSign, MessageSquare, ArrowRight } from 'lucide-react';
-import { PhoneMockup, TicketCard, ProfileCard, SocialProofBanner } from '../../components/PhoneMockUp';
+import { PhoneMockUp, TicketCard, ProfileCard, SocialProofBanner } from '../../components/PhoneMockUp';
 import Footer from '../../components/Footer';
 import HeroSlider from "../../components/HeroSlider";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Index.jsx";
 
 
 
@@ -43,7 +43,7 @@ const HeroSection = () => {
 
           {/* Right Content - Phone Mockup */}
           <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <PhoneMockup />
+            <PhoneMockUp />
             <TicketCard />
             <ProfileCard />
           </div>

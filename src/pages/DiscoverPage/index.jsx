@@ -1,8 +1,8 @@
 import { ArrowRight, Share2, Users, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from "react";
-import api from "../../api";
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
+import api from "../../api";
 
 
 const Community = () => {
