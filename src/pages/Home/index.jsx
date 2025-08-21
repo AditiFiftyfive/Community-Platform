@@ -9,7 +9,7 @@ import Navbar from '../../components/Navbar';
 // Hero Section
 const HeroSection = () => {
   return (
-    <section className="pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12 md:pb-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <section className="pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12 md:pb-16 bg-gradient-to-br from-[rgb(240,236,231)] to-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
           {/* Left Content */}
@@ -79,7 +79,7 @@ const FeaturesPreview = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-white">
+    <section className="py-12 sm:py-16 bg-gradient-to-br from-[rgb(240,236,231)] to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">

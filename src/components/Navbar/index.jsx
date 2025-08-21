@@ -3,14 +3,10 @@ import React, { useState } from "react";
 import { Search, ChevronDown, Ticket, User, Grid } from "lucide-react";
 import { useUser, SignOutButton } from "@clerk/clerk-react";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
-import CustomSignInModal from "../CustomSignInModal";
-
 
 const Navbar = () => {
-  // State for controlling which menu is active and modal visibility
+  // State for controlling which menu is active
   const [activeMenu, setActiveMenu] = useState(null);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   
   // Get current location and user info
   const location = useLocation();
@@ -23,35 +19,17 @@ const Navbar = () => {
     { label: "About us", id: "about-us", path: "/about" },
   ];
 
-  // Function to open the sign-in modal
-  const handleUserIconClick = () => {
-    setIsSignInModalOpen(true);
-  };
-
-  // Function to close all modals
-  const handleCloseModals = () => {
-    setIsSignInModalOpen(false);
-    setIsSignUpModalOpen(false);
-  };
-
-  // Function to switch from SignIn to SignUp
-  const handleSwitchToSignUp = () => {
-    setIsSignInModalOpen(false);
-    setIsSignUpModalOpen(true);
-  };
-
-  // Function
-
   return (
     <>
       {/* Main Navigation Header */}
-      <header className="fixed top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98%] sm:w-[95%] md:w-[90%] bg-white rounded-xl sm:rounded-2xl shadow-md border border-gray-300">
+      <header className="fixed top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98%] sm:w-[95%] md:w-[90%] 
+      bg-gradient-to-br from-[rgb(240,236,231)] to-white rounded-xl sm:rounded-2xl shadow-md border border-gray-300">
         <div className="relative h-16 sm:h-20 flex items-center justify-center px-3 sm:px-6">
           
           {/* Logo - Left Side */}
-          <div className="absolute left-3 sm:left-6 text-lg sm:text-xl md:text-2xl font-bold text-[#1A103D]">
+          <Link to="/" className="absolute left-3 sm:left-6 text-lg sm:text-xl md:text-2xl font-bold text-[#1A103D]">
             ThriveCircle
-          </div>
+          </Link>
 
           {/* Navigation Menu - Center (Hidden on mobile) */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-10 text-center absolute left-1/2 transform -translate-x-1/2">
@@ -91,14 +69,14 @@ const Navbar = () => {
             {/* User Authentication Section */}
             <div className="hidden sm:block">
               {!isSignedIn ? (
-                /* Show User Icon for Sign In */
-                <button 
-                  onClick={handleUserIconClick}
+                /* Show User Icon that links to Sign In page */
+                <Link 
+                  to="/signin"
                   className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                   title="Sign In"
                 >
                   <User size={24} className="text-gray-700 hover:text-black" />
-                </button>
+                </Link>
               ) : (
                 /* Show User Menu when Signed In */
                 <Menu as="div" className="relative inline-block text-left">
@@ -111,14 +89,12 @@ const Navbar = () => {
                         </div>
                         <ChevronDown
                           size={16}
-                          className={`text-gray-600 transition-transform duration-200 ${
-                            open ? "rotate-180" : "rotate-0"
-                          }`}
+                          className="text-gray-600"
                         />
                       </MenuButton>
 
                       {/* Dropdown Menu Items */}
-                      <MenuItems className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-white shadow-lg ring-1 ring-black/5 focus:outline-none p-2 transition-all duration-200 ease-out">
+                      <MenuItems className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-white shadow-lg ring-1 ring-black/5 focus:outline-none p-2">
                         
                         {/* My Tickets */}
                         <MenuItem>
@@ -180,12 +156,6 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-
-      {/* Sign In Modal - Separate Component */}
-      <CustomSignInModal 
-        isOpen={isSignInModalOpen} 
-        onClose={handleCloseModals} 
-      />
     </>
   );
 };
