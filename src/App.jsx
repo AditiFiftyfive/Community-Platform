@@ -5,6 +5,7 @@ import CommunityEvents from './pages/CommunityEvents';
 import DiscoverPage from './pages/DiscoverPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import CreateCommunityPage from './pages/CreateCommunityPage';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/discover" element={<DiscoverPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/create-thrivecircle" element={<CreateCommunityPage />} />
         </Routes>
       </div>
     </Router>

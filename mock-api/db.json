@@ -290,5 +290,21 @@
       "color": "bg-indigo-500",
       "members": "4.1K"
     }
+  ],
+
+  "categories": [
+    { "id": "food", "parentId": "community", "label": "🍕 Food & Drink", "color": "bg-red-100 text-red-700" },
+    { "id": "art", "parentId": "arts-culture", "label": "🎭 Art", "color": "bg-violet-100 text-violet-700" },
+    { "id": "photography", "parentId": "arts-culture", "label": "📸 Photography", "color": "bg-purple-100 text-purple-700" },
+    { "id": "agriculture", "parentId": "climate", "label": "🌱 Agriculture", "color": "bg-green-100 text-green-700" },
+    { "id": "history", "parentId": "arts-culture", "label": "🏛️ History", "color": "bg-amber-100 text-amber-700" },
+    { "id": "fitness-outdoors", "parentId": "fitness", "label": "💪 Fitness & Outdoors", "color": "bg-orange-100 text-orange-700" },
+    { "id": "music", "parentId": "arts-culture", "label": "🎵 Music", "color": "bg-pink-100 text-pink-700" },
+    { "id": "sports", "parentId": "fitness", "label": "🏀 Sports", "color": "bg-indigo-100 text-indigo-700" },
+    { "id": "adventure", "parentId": "fitness", "label": "⛰️ Adventure", "color": "bg-green-100 text-green-700" },
+    { "id": "running", "parentId": "fitness", "label": "🏃 Running", "color": "bg-blue-100 text-blue-700" },
+    { "id": "wellness", "parentId": "wellness", "label": "🧘 Wellness", "color": "bg-teal-100 text-teal-700" },
+    { "id": "technology", "parentId": "ai", "label": "💻 Technology", "color": "bg-gray-100 text-gray-700" },
+    { "id": "books", "parentId": "arts-culture", "label": "📚 Books", "color": "bg-amber-100 text-amber-700" }
   ]
 }

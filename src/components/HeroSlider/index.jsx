@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, Users, Calendar, MapPin } from 'lucide-react';
 import api from "../../api";
 
@@ -93,7 +94,12 @@ const HeroSlider = () => {
           </div>
 
           {/* Title */}
-          <h1 className="text-5xl lg:text-7xl font-bold mb-4 leading-tight">{current.title}</h1>
+          <Link 
+            to={`/community/${current.title.toLowerCase().replace(/\s+/g, "-")}`} 
+            className="block text-5xl lg:text-7xl font-bold mb-4 leading-tight"
+          >
+            {current.title}
+          </Link>
 
           {/* Subtitle */}
           <div className="flex items-center gap-2 mb-6 text-xl text-gray-300">

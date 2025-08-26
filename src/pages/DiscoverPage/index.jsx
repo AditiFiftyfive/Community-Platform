@@ -1,5 +1,6 @@
 import { ArrowRight, Share2, Users, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Footer from '../../components/Footer';
 import api from "../../api";
 import Navbar from './../../components/Navbar';
@@ -38,9 +39,6 @@ const Community = () => {
     );
   }
 
-  const handleAction = (action, name) =>
-    alert(`${action} ${name}!\nThis would typically redirect to a ${action.toLowerCase()} page.`);
-
   return (
     <div className="min-h-screen py-6 sm:py-8 md:py-10 px-0">
       <div className="w-full px-4 sm:px-6 md:px-8 mb-6 sm:mb-8 md:mb-10 text-center">
@@ -53,7 +51,7 @@ const Community = () => {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 cursor-pointer">
           {communities.map((c) => (
             <div
               key={c.id}
@@ -112,20 +110,20 @@ const Community = () => {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <button
-                    onClick={() => handleAction("Exploring", c.name)}
-                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base"
+                <div className="flex flex-col sm:flex-row gap-2"> 
+                  <Link
+                    to={`/explore/${c.name}`} 
+                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base flex items-center justify-center"
                   >
                     Explore Now
-                  </button>
-                  <button
-                    onClick={() => handleAction("Joining", c.name)}
+                  </Link>
+                  <Link
+                    to={`/join/${c.name}`}
                     className="flex-1 bg-black hover:bg-gray-800 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
                     Join Now
                     <ArrowRight size={14} className="sm:w-4 sm:h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -138,7 +136,7 @@ const Community = () => {
 
 
 const DiscoverEvents = () => {
-  const categories = [
+  const parentCategories = [
     { name: 'AI', events: '2K Events', bgColor: 'bg-[#D6D1B1]' },
     { name: 'Arts & Culture', events: '675 Events', bgColor: 'bg-[#C6D8D3]' },
     { name: 'Climate', events: '423 Events', bgColor: 'bg-[#E5CED8]' },
@@ -160,7 +158,7 @@ const DiscoverEvents = () => {
           Browse by Category
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {categories.map((category, i) => (
+          {parentCategories.map((category, i) => (
             <div 
               key={i} 
               className={`${category.bgColor} rounded-lg p-4 sm:p-5 md:p-6 hover:bg-gray-200 transition-colors duration-200 cursor-pointer hover:scale-[1.02] transition-transform`}

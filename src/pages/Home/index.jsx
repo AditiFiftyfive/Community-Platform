@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {  Users, Calendar, DollarSign, MessageSquare, ArrowRight } from 'lucide-react';
 import { PhoneMockUp, TicketCard, ProfileCard, SocialProofBanner } from '../../components/PhoneMockUp';
 import Footer from '../../components/Footer';
@@ -32,12 +33,15 @@ const HeroSection = () => {
             </div>
 
             <div className="flex justify-center lg:justify-start">
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all flex items-center space-x-2 sm:space-x-3 group shadow-md text-sm sm:text-base">
+              <Link
+                to="/create-thrivecircle"
+                className="bg-gray-300 hover:bg-gray-400 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all flex items-center space-x-2 sm:space-x-3 group shadow-md text-sm sm:text-base"
+              >
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
                   <ArrowRight size={16} className="sm:w-5 sm:h-5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
                 <span>Create your ThriveCircle</span>
-              </button>
+              </Link>
             </div>
           </div>
 
