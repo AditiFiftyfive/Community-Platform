@@ -21,7 +21,7 @@ const Section3CoverImage = ({
             : "border-gray-300 hover:border-gray-400"
         } ${errors.coverImage ? "border-red-300" : ""}`}
         onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
+        onDragLeave={handleDrag}    
         onDragOver={handleDrag}
         onDrop={handleDrop}
       >
@@ -34,7 +34,9 @@ const Section3CoverImage = ({
                 className="max-h-32 rounded-lg shadow-md"
               />
               <button
-                onClick={() => handleInputChange("coverImage", null)}
+                onClick={(e) => {
+                e.stopPropagation();  
+                handleInputChange("coverImage", null)}}
                 className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
               >
                 <X className="w-3 h-3" />
@@ -54,18 +56,14 @@ const Section3CoverImage = ({
           </div>
         )}
 
-        <input
-          type="file"
-          onChange={(e) => handleFileSelect(e, "coverImage")}
-          accept="image/*"
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-        />
-
-        <div className="absolute top-4 right-4 flex space-x-2">
-          <button className="p-2 bg-white rounded-full shadow hover:shadow-md">
-            <Upload className="w-4 h-4 text-gray-600" />
-          </button>
-        </div>
+        {!formData.coverImage && (
+            <input
+                type="file"
+                onChange={(e) => handleFileSelect(e, "coverImage")}
+                accept="image/*"
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            />
+            )}
       </div>
       {errors.coverImage && (
         <p className="text-red-500 text-sm mt-1">{errors.coverImage}</p>

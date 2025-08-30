@@ -5,6 +5,8 @@ import { Section1, Section2, Section3CoverImage, Section3ProfileImage } from '..
 import RightSection from './RightSection';
 import { useFormData, useFormValidation, useFormNavigation, useDragAndDrop } from './hooks';
 import { SECTION_CONFIG } from './utils';
+import { useNavigate } from "react-router-dom";
+
 
 const CreateCommunityPage = () => {
   // Custom hooks for clean state management
@@ -30,11 +32,24 @@ const CreateCommunityPage = () => {
   const nextSection = () => {
     if (validateSection(currentSection)) goNext();
   };
+  
+  const navigate = useNavigate();
+
+  const slugify = (text) =>
+  text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')       // spaces → dashes
+    .replace(/[^\w\-]+/g, '')   // remove non-word chars
+    .replace(/\-\-+/g, '-');    // collapse multiple -
 
   const handleSubmit = () => {
     if (validateSection(currentSection)) {
-      console.log('Form submitted:', formData);
-      alert('Community created successfully!');
+      const communityName = formData.communityName || "new-community";
+      const slug = slugify(communityName);
+      
+      navigate(`/community/${slug}`, { state: { formData } });
     }
   };
 
@@ -46,7 +61,7 @@ const CreateCommunityPage = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         {/* Left side: form */}
-        <div className="bg-gradient-to-br from-[rgb(240,236,231)] to-white border-r border-gray-200">
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-r border-gray-200">
           <div className="h-full overflow-y-auto">
             <div className="min-h-screen flex flex-col justify-center p-8 lg:p-12">
               <div className="max-w-lg mx-auto w-full">
@@ -68,8 +83,8 @@ const CreateCommunityPage = () => {
                       <div
                         key={step}
                         className={`w-8 h-2 rounded-full transition-colors ${
-                          step === currentSection ? 'bg-gray-900' : 
-                          step < currentSection ? 'bg-gray-700' : 'bg-gray-300'
+                          step === currentSection ? 'bg-gray-600' : 
+                          step < currentSection ? 'bg-gray-900' : 'bg-gray-300'
                         }`}
                       />
                     ))}
@@ -157,7 +172,7 @@ const CreateCommunityPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>  
 
         {/* Right side */}
         <div className="hidden lg:block">

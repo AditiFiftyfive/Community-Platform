@@ -1,4 +1,3 @@
-// Form constants
 export const SECTION_CONFIG = {
   1: {
     title: "Let's get started",
