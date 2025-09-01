@@ -1,40 +1,60 @@
 import { ArrowRight, Share2, Users, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from '../../components/Footer';
-import api from "../../api";
 import Navbar from './../../components/Navbar';
-
+import { fetchCommunities } from '../../reduxTK/features/community/communitySlice'; // Update path as needed
 
 const Community = () => {
-  const [communities, setCommunities] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // Use Redux instead of local state
+  const dispatch = useDispatch();
+  const { items: communities = [], loading, error } = useSelector(
+    (state) => state.community
+  );
 
   useEffect(() => {
-    api
-      .get("/Communities")
-      .then((response) => {
-        setCommunities(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, []);
+    // Fetch communities through Redux
+    if (communities.length === 0) {
+      dispatch(fetchCommunities());
+    }
+  }, [dispatch, communities.length]);
 
   if (loading) {
     return (
-      <div className="w-full h-screen flex items-center justify-center text-white bg-gray-900">
-        Loading communities...
+      <div className="w-full h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-50">
+        <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
+          <p className="text-purple-400 text-lg">Loading communities...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-pink-50">
+        <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
+          <div className="text-red-500 text-4xl mb-4">⚠️</div>
+          <p className="text-red-500 text-lg">Error loading communities: {error}</p>
+          <button 
+            onClick={() => dispatch(fetchCommunities())}
+            className="mt-4 px-6 py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
       </div>
     );
   }
 
   if (communities.length === 0) {
     return (
-      <div className="w-full h-screen flex items-center justify-center text-white bg-gray-900">
-        No communities found.
+      <div className="w-full h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-pink-50">
+        <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
+          <div className="text-gray-400 text-4xl mb-4">🏘️</div>
+          <p className="text-gray-600 text-lg">No communities found.</p>
+        </div>
       </div>
     );
   }
@@ -52,88 +72,92 @@ const Community = () => {
 
       <div className="w-full px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 cursor-pointer">
-          {communities.map((c) => (
-            <div
-              key={c.id}
-              className="w-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105"
-            >
-              {/* Image + title */}
-              <div className="relative h-48 sm:h-56 md:h-64">
-                <img src={c.image} alt={c.name} className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div
-                      className={`w-6 sm:w-8 h-6 sm:h-8 ${c.color} rounded-full flex items-center justify-center`}
-                    >
-                      <Users size={14} className="sm:w-4 sm:h-4 text-white" />
+          {communities.map((c) => {
+            // Generate consistent slug
+            const slug = c.name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+            
+            return (
+              <div
+                key={c.id}
+                className="w-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105"
+              >
+                {/* Image + title */}
+                <div className="relative h-48 sm:h-56 md:h-64">
+                  <img src={c.image} alt={c.name} className="w-full h-full object-cover" />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div
+                        className={`w-6 sm:w-8 h-6 sm:h-8 ${c.color} rounded-full flex items-center justify-center`}
+                      >
+                        <Users size={14} className="sm:w-4 sm:h-4 text-white" />
+                      </div>
+                      <h3 className="text-white font-bold text-sm sm:text-base md:text-lg line-clamp-2">
+                        {c.name}
+                      </h3>
                     </div>
-                    <h3 className="text-white font-bold text-sm sm:text-base md:text-lg line-clamp-2">
-                      {c.name}
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-1 text-white/90 text-xs sm:text-sm mb-2">
-                    <MapPin size={12} className="sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                    <span className="truncate">{c.location}</span>
+                    <div className="flex items-center gap-1 text-white/90 text-xs sm:text-sm mb-2">
+                      <MapPin size={12} className="sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                      <span className="truncate">{c.location}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Details */}
-              <div className="p-4 sm:p-5 md:p-6">
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-                  <span
-                    className={`px-2 sm:px-3 py-1 ${c.color} text-white text-xs font-medium rounded-full`}
-                  >
-                    {c.category}
-                  </span>
-                  {c.subcategories.slice(0, 2).map((sub, i) => (
+                {/* Details */}
+                <div className="p-4 sm:p-5 md:p-6">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                     <span
-                      key={i}
-                      className="px-2 sm:px-3 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full"
+                      className={`px-2 sm:px-3 py-1 ${c.color} text-white text-xs font-medium rounded-full`}
                     >
-                      {sub}
+                      {c.category}
                     </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <div className="min-w-0 flex-1 mr-4">
-                    <p className="text-gray-600 text-xs sm:text-sm">Builder:</p>
-                    <p className="font-semibold text-gray-800 text-sm sm:text-base truncate">
-                      {c.builder}
-                    </p>
+                    {c.subcategories.slice(0, 2).map((sub, i) => (
+                      <span
+                        key={i}
+                        className="px-2 sm:px-3 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full"
+                      >
+                        {sub}
+                      </span>
+                    ))}
                   </div>
-                  <div className="text-right flex-shrink-0">
-                    <p className="text-gray-600 text-xs sm:text-sm">Members</p>
-                    <p className="font-bold text-gray-800 text-sm sm:text-base">{c.members}</p>
-                  </div>
-                </div>
 
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2"> 
-                  <Link
-                    to={`/explore/${c.name}`} 
-                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base flex items-center justify-center"
-                  >
-                    Explore Now
-                  </Link>
-                  <Link
-                    to={`/join/${c.name}`}
-                    className="flex-1 bg-black hover:bg-gray-800 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >
-                    Join Now
-                    <ArrowRight size={14} className="sm:w-4 sm:h-4" />
-                  </Link>
+                  <div className="flex items-center justify-between mb-4 sm:mb-5">
+                    <div className="min-w-0 flex-1 mr-4">
+                      <p className="text-gray-600 text-xs sm:text-sm">Builder:</p>
+                      <p className="font-semibold text-gray-800 text-sm sm:text-base truncate">
+                        {c.builder}
+                      </p>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <p className="text-gray-600 text-xs sm:text-sm">Members</p>
+                      <p className="font-bold text-gray-800 text-sm sm:text-base">{c.members}</p>
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Link
+                      to={`/community/${slug}`}
+                      className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base flex items-center justify-center"
+                    >
+                      Explore Now
+                    </Link>
+                    <Link
+                      to={`/join/${slug}`}
+                      className="flex-1 bg-black hover:bg-gray-800 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
+                    >
+                      Join Now
+                      <ArrowRight size={14} className="sm:w-4 sm:h-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
-
 
 const DiscoverEvents = () => {
   const parentCategories = [
@@ -189,6 +213,4 @@ const DiscoverPage = () => {
   );
 };
 
-
 export default DiscoverPage;
-  

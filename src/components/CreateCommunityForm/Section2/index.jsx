@@ -66,11 +66,8 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
             value={formData.pageLink || ''}
             onChange={(e) => handleInputChange('pageLink', e.target.value)}
             placeholder="Your community handle"
-            className="flex-1 px-4 py-3 border border-gray-200 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
           />
-          <div className="px-4 py-3 bg-gray-50 border border-l-0 border-gray-200 rounded-r-lg text-gray-500">
-            .thriveirl.com
-          </div>
         </div>
         {formData.pageLink && (
           <p className="text-green-600 text-sm mt-1 flex items-center gap-1">
