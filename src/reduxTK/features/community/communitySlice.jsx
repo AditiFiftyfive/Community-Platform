@@ -15,6 +15,8 @@ export const fetchCommunities = createAsyncThunk(
   }
 );
 
+
+
 const communitySlice = createSlice({
   name: "communities", // must match the key in store
   initialState: {
@@ -23,13 +25,17 @@ const communitySlice = createSlice({
     error: null
   },
   reducers: {
-    addCommunity: (state, action) => {
-      const c = action.payload;
-      state.items.push({
-        ...c,
-        slug: c.slug || slugify(c.communityName || c.name || "")
-      });
-    },
+  addCommunity: (state, action) => {
+    const { community, currentUser } = action.payload;
+
+    state.items.push({
+      ...community,
+      slug: community.slug || slugify(community.communityName || community.name || ""),
+      createdBy: currentUser?.id,       // 🔑 Clerk ID
+      creatorEmail: currentUser?.email, // optional, for redundancy
+      builder: currentUser?.name || currentUser?.username
+    });
+  },
     removeCommunity: (state, action) => {
       state.items = state.items.filter(c => c.id !== action.payload);
     },

@@ -7,8 +7,8 @@ import { useFormData, useFormValidation, useFormNavigation, useDragAndDrop } fro
 import { SECTION_CONFIG } from './utils';
 import { useNavigate } from "react-router-dom";
 import { slugify } from "../../utils/slugify";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addCommunity } from "../../reduxTK/features/community/communitySlice";
 
 
 const CreateCommunityPage = () => {
@@ -16,6 +16,8 @@ const CreateCommunityPage = () => {
   const { formData, handleInputChange, handleCategoryToggle } = useFormData();
   const { errors, validateSection, clearError } = useFormValidation(formData);
   const { currentSection, nextSection: goNext, prevSection } = useFormNavigation();
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.user);
   
   // Drag and drop with error clearing
   const { dragActive, handleDrag, handleDrop, handleFileSelect } = useDragAndDrop(
@@ -37,29 +39,34 @@ const CreateCommunityPage = () => {
   };
   
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const handleSubmit = () => {
+  // Simple submit handler - just navigate with data
+  const handleSubmit = async () => {
   if (validateSection(currentSection)) {
     const communityName = formData.communityName || "new-community";
     const slug = slugify(communityName);
 
-    // ✅ Build a proper community object
+    // Build full community object
     const newCommunity = {
       ...formData,
-      id: Date.now(), // temporary unique id
+      id: Date.now(),
       slug,
       createdAt: new Date().toISOString(),
+      createdBy: currentUser?.id,        // 🔑 Clerk ID
+      creatorEmail: currentUser?.email,  // optional for redundancy
+      builder: currentUser?.name || currentUser?.username,
     };
 
-    // ✅ Add it to Redux store
-    dispatch(addCommunity(newCommunity));
+    // 1️⃣ Add to Redux
+    dispatch(addCommunity({ community: newCommunity, currentUser }));
 
-    // ✅ Navigate to the community page
-    navigate(`/community/${slug}`);
+    // 2️⃣ (Optional) Save to backend
+    // await axios.post("http://localhost:5000/Communities", newCommunity);
+
+    // 3️⃣ Navigate to dashboard
+    navigate(`/community/${slug}`, { state: { formData: newCommunity } });
   }
 };
-
   // Get current section config
   const currentConfig = SECTION_CONFIG[currentSection];
   const isLastSection = currentSection === 3;

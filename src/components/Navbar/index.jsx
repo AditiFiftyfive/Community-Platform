@@ -20,9 +20,9 @@ const Navbar = () => {
 
   const communities = useSelector((state) => state.communities?.items || []);
 
-const userCommunity = communities.find(
-  (c) => c.createdBy === user?.id || c.userId === user?.id
-);
+  const userCommunity = communities.find(
+    (c) => c.createdBy === user?.id || c.userId === user?.id
+  );
 
   // User menu items
   const menuItems = [

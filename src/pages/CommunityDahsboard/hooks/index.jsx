@@ -60,14 +60,14 @@ export const normalizeCommunityData = (apiCommunity) => {
 export const checkCreatorPermissions = (community, currentUser) => {
   if (!community || !currentUser) return { isCreator: false };
 
-  // Normalize values
-  const communityCreatorId = community.createdBy || community.builder;
-  const communityCreatorEmail = community.creatorEmail || community.builderEmail;
+  const communityCreatorId =
+    community.createdBy || community.userId || community.builder;
+  const communityCreatorEmail =
+    community.creatorEmail || community.builderEmail;
 
-  const userId = currentUser.id;
+  const userId = currentUser.id;      // comes from Clerk via AuthSync
   const userEmail = currentUser.email;
 
-  // Match by ID OR Email
   const isCreator =
     (communityCreatorId && communityCreatorId === userId) ||
     (communityCreatorEmail && communityCreatorEmail === userEmail);
