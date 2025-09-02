@@ -6,6 +6,9 @@ import RightSection from './RightSection';
 import { useFormData, useFormValidation, useFormNavigation, useDragAndDrop } from './hooks';
 import { SECTION_CONFIG } from './utils';
 import { useNavigate } from "react-router-dom";
+import { slugify } from "../../utils/slugify";
+import { useDispatch } from "react-redux";
+
 
 
 const CreateCommunityPage = () => {
@@ -34,24 +37,28 @@ const CreateCommunityPage = () => {
   };
   
   const navigate = useNavigate();
-
-  const slugify = (text) =>
-  text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, '-')       // spaces → dashes
-    .replace(/[^\w\-]+/g, '')   // remove non-word chars
-    .replace(/\-\-+/g, '-');    // collapse multiple -
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    if (validateSection(currentSection)) {
-      const communityName = formData.communityName || "new-community";
-      const slug = slugify(communityName);
-      
-      navigate(`/community/${slug}`, { state: { formData } });
-    }
-  };
+  if (validateSection(currentSection)) {
+    const communityName = formData.communityName || "new-community";
+    const slug = slugify(communityName);
+
+    // ✅ Build a proper community object
+    const newCommunity = {
+      ...formData,
+      id: Date.now(), // temporary unique id
+      slug,
+      createdAt: new Date().toISOString(),
+    };
+
+    // ✅ Add it to Redux store
+    dispatch(addCommunity(newCommunity));
+
+    // ✅ Navigate to the community page
+    navigate(`/community/${slug}`);
+  }
+};
 
   // Get current section config
   const currentConfig = SECTION_CONFIG[currentSection];

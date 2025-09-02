@@ -2,6 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 import { Search, ChevronDown, Ticket, User, Grid } from "lucide-react";
 import { useUser, SignOutButton } from "@clerk/clerk-react";
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,13 +18,21 @@ const Navbar = () => {
     { label: "About us", path: "/about" },
   ];
 
+  const communities = useSelector((state) => state.communities?.items || []);
+
+const userCommunity = communities.find(
+  (c) => c.createdBy === user?.id || c.userId === user?.id
+);
+
   // User menu items
   const menuItems = [
-    { to: "/tickets", icon: Ticket, label: "My Tickets" },
-    { to: "/profile", icon: User, label: "My Profile" },
-    { to: "/dashboard", icon: Grid, label: "Dashboard" },
-    { to: "/community", label: "Claim your Community" },
-  ];
+  { to: "/tickets", icon: Ticket, label: "My Tickets" },
+  { to: "/profile", icon: User, label: "My Profile" },
+  { to: "/dashboard", icon: Grid, label: "Dashboard" },
+  userCommunity
+    ? { to: `/dashboard/${userCommunity.slug}`, label: userCommunity.name }
+    : { to: "/community", label: "Claim your Community" },
+];
 
   // Close dropdown when clicking outside
   useEffect(() => {

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Footer from '../../components/Footer';
 import api from "../../api";
 import Navbar from './../../components/Navbar';
+import { slugify } from '../../utils/slugify';
+
 
 
 const Community = () => {
@@ -11,17 +13,21 @@ const Community = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api
-      .get("/Communities")
-      .then((response) => {
-        setCommunities(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, []);
+  api
+    .get("/Communities")
+    .then((response) => {
+      const withSlugs = response.data.map((c) => ({
+        ...c,
+        slug: c.slug || slugify(c.communityName || c.name),
+      }));
+      setCommunities(withSlugs);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setLoading(false);
+    });
+}, []);
 
   if (loading) {
     return (
@@ -112,13 +118,13 @@ const Community = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2"> 
                   <Link
-                    to={`/explore/${c.name}`} 
+                    to={`/community/${c.slug}`} 
                     className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base flex items-center justify-center"
                   >
                     Explore Now
                   </Link>
                   <Link
-                    to={`/join/${c.name}`}
+                    to={`/join/${c.slug}`}
                     className="flex-1 bg-black hover:bg-gray-800 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
                     Join Now
