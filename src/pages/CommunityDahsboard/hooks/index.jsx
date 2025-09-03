@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { slugify } from "../../../utils/slugify";
+import { useUser } from "@clerk/clerk-react";
 
 
 
@@ -80,20 +81,24 @@ export const useCommunityDashboard = () => {
   const { slug } = useParams();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("overview");
-
-  // From creation flow (formData)
   const { formData } = location.state || {};
 
-  // From Redux (explore flow)
  const { items: communities = [], loading, error } = useSelector(
   (state) => state.communities   
 );
 
-  // Current user from Redux (adjust path to your auth slice)
-  const currentUser = useSelector((state) => state.auth?.user);
+const { user } = useUser();
 
+  const currentUser = user
+    ? {
+        id: user.id,
+        name: user.fullName,
+        email: user.primaryEmailAddress?.emailAddress,
+        username: user.username,
+        imageUrl: user.imageUrl,
+      }
+    : null;
 
-  // Normalize communities
   const processedCommunities = useMemo(() => {
     return communities
       .map((c) =>

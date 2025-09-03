@@ -115,7 +115,7 @@ const CommunityCards = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2"> 
                   <Link
-                    to={`/community/${c.slug}`} 
+                    to={`/dashboard/${c.slug}`} 
                     className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 px-3 sm:px-5 rounded-lg transition-colors duration-200 text-sm sm:text-base flex items-center justify-center"
                   >
                     Explore Now

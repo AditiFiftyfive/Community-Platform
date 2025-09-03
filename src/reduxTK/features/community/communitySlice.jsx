@@ -1,4 +1,3 @@
-// reduxTK/features/community/communitySlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { slugify } from "../../../utils/slugify";
@@ -16,24 +15,33 @@ export const fetchCommunities = createAsyncThunk(
 );
 
 const communitySlice = createSlice({
-  name: "communities", // must match the key in store
+  name: "communities", 
   initialState: {
-    items: [],       // all communities
+    items: [],       
     loading: false,
     error: null
   },
   reducers: {
-  addCommunity: (state, action) => {
-    const { community, currentUser } = action.payload;
+    addCommunity: (state, action) => {
+      const { community, currentUser } = action.payload;
 
-    state.items.push({
-      ...community,
-      slug: community.slug || slugify(community.communityName || community.name || ""),
-      createdBy: currentUser?.id,       // 🔑 Clerk ID
-      creatorEmail: currentUser?.email, // optional, for redundancy
-      builder: currentUser?.name || currentUser?.username
-    });
-  },
+      state.items.push({
+        ...community,
+        coverImage: community.coverImage instanceof File
+          ? URL.createObjectURL(community.coverImage)
+          : community.coverImage || null,
+
+        profileImage: community.profileImage instanceof File
+          ? URL.createObjectURL(community.profileImage)
+          : community.profileImage || null,
+
+        slug: community.slug || slugify(community.communityName || community.name || ""),
+        createdBy: currentUser?.id,
+        creatorEmail: currentUser?.email,
+        builder: currentUser?.name || currentUser?.username,
+      });
+    },
+
     removeCommunity: (state, action) => {
       state.items = state.items.filter(c => c.id !== action.payload);
     },
@@ -68,8 +76,7 @@ const communitySlice = createSlice({
   }
 });
 
-// ✅ Selectors
-// Communities created by the current user
+
 export const selectUserCommunities = (state, currentUser) => {
   if (!state.communities?.items || !currentUser) return [];
 
@@ -85,13 +92,13 @@ export const selectUserCommunities = (state, currentUser) => {
   });
 };
 
-// Check if current user has created any community
+
 export const selectHasCreatedCommunity = (state, currentUser) => {
   const userCommunities = selectUserCommunities(state, currentUser);
   return userCommunities.length > 0;
 };
 
-// Export actions and reducer
+
 export const { addCommunity, removeCommunity, updateCommunity, clearCommunities } =
   communitySlice.actions;
 export default communitySlice.reducer;

@@ -16,7 +16,7 @@ export default function App() {
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/create-thrivecircle" element={<CreateCommunityPage />} />
-        <Route path="/community/:slug" element={<CommunityDashboard />} />
+        <Route path="/dashboard/:slug" element={<CommunityDashboard />} />
       </Routes>
     </div>
   );

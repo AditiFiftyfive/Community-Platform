@@ -1,4 +1,3 @@
-// CreateCommunityPage/index.jsx
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Section1, Section2, Section3CoverImage, Section3ProfileImage } from '../../components/CreateCommunityForm';
@@ -7,8 +6,10 @@ import { useFormData, useFormValidation, useFormNavigation, useDragAndDrop } fro
 import { SECTION_CONFIG } from './utils';
 import { useNavigate } from "react-router-dom";
 import { slugify } from "../../utils/slugify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addCommunity } from "../../reduxTK/features/community/communitySlice";
+import { useUser } from "@clerk/clerk-react";
+
 
 
 const CreateCommunityPage = () => {
@@ -17,7 +18,16 @@ const CreateCommunityPage = () => {
   const { errors, validateSection, clearError } = useFormValidation(formData);
   const { currentSection, nextSection: goNext, prevSection } = useFormNavigation();
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.auth.user);
+  const { user, isSignedIn } = useUser();
+  const currentUser = user
+  ? {
+      id: user.id,
+      name: user.fullName,
+      email: user.primaryEmailAddress?.emailAddress,
+      username: user.username,
+      imageUrl: user.imageUrl,
+    }
+  : null; 
   
   // Drag and drop with error clearing
   const { dragActive, handleDrag, handleDrop, handleFileSelect } = useDragAndDrop(
@@ -39,28 +49,36 @@ const CreateCommunityPage = () => {
   };
   
   const navigate = useNavigate();
+  
 
-  // Simple submit handler - just navigate with data
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
   if (validateSection(currentSection)) {
     const communityName = formData.communityName || "new-community";
     const slug = slugify(communityName);
 
-    // Build full community object
     const newCommunity = {
       ...formData,
       id: Date.now(),
       slug,
       createdAt: new Date().toISOString(),
-      createdBy: currentUser?.id,        // 🔑 Clerk ID
-      creatorEmail: currentUser?.email,  // optional for redundancy
+      createdBy: currentUser?.id,
+      creatorEmail: currentUser?.email,
       builder: currentUser?.name || currentUser?.username,
+      // 🔑 Convert File → blob URL before dispatch
+      coverImage: formData.coverImage
+        ? URL.createObjectURL(formData.coverImage)
+        : null,
+      profileImage: formData.profileImage
+        ? URL.createObjectURL(formData.profileImage)
+        : null,
     };
-    // 1️⃣ Add to Redux
+
     dispatch(addCommunity({ community: newCommunity, currentUser }));
+
     navigate(`/dashboard/${slug}`, { state: { formData: newCommunity } });
   }
 };
+
   // Get current section config
   const currentConfig = SECTION_CONFIG[currentSection];
   const isLastSection = currentSection === 3;
