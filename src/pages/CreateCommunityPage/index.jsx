@@ -56,15 +56,9 @@ const CreateCommunityPage = () => {
       creatorEmail: currentUser?.email,  // optional for redundancy
       builder: currentUser?.name || currentUser?.username,
     };
-
     // 1️⃣ Add to Redux
     dispatch(addCommunity({ community: newCommunity, currentUser }));
-
-    // 2️⃣ (Optional) Save to backend
-    // await axios.post("http://localhost:5000/Communities", newCommunity);
-
-    // 3️⃣ Navigate to dashboard
-    navigate(`/community/${slug}`, { state: { formData: newCommunity } });
+    navigate(`/dashboard/${slug}`, { state: { formData: newCommunity } });
   }
 };
   // Get current section config

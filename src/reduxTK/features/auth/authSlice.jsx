@@ -30,11 +30,6 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
     },
-    // For testing - manually set a user
-    setTestUser: (state, action) => {
-      state.user = action.payload;
-      state.isAuthenticated = true;
-    }
   },
 });
 
