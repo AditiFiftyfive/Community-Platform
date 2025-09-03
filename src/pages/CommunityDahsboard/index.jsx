@@ -83,13 +83,15 @@ const CommunityDashboard = () => {
               )}
             </div>
 
-            {/* Name + Desc */}
+            {/* Name + Description */}
             <div className="flex-1">
-              <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
+              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 -mt-2 ">
                 {displayCommunity.communityName}
               </h1>
-              <p className="text-slate-600 text-lg">{displayCommunity.description}</p>
             </div>
+          </div>
+          <div className="flex-1">
+              <p className="text-slate-600 text-lg">{displayCommunity.description}</p>
           </div>
 
           {/* Categories */}
@@ -105,7 +107,7 @@ const CommunityDashboard = () => {
               ))}
             </div>
           )}
-
+ 
           {/* Public Page Link */}
           <div className="bg-green-50 p-4 rounded-xl border border-green-100">
             <div className="flex items-center gap-3">
@@ -126,38 +128,38 @@ const CommunityDashboard = () => {
         </div>
 
         {/* Tabs + Actions */}
-<div className="mt-12 px-4 sm:px-6">
-  <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:justify-between sm:items-center">
-    {/* Tabs */}
-    <div className="flex-1 bg-white rounded-xl shadow-md overflow-hidden">
-      <nav className="flex">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`flex-1 px-4 py-3 font-medium text-center transition-colors ${
-              activeTab === tab
-                ? "text-purple-700 bg-purple-50 border-b-2 border-purple-400"
-                : "text-slate-600 hover:text-slate-800 hover:bg-slate-50"
-            }`}
-          >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
-          </button>
-        ))}
-      </nav>
-    </div>
+        <div className="mt-12 px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:justify-between sm:items-center">
+            {/* Tabs */}
+            <div className="flex-1 bg-white rounded-xl shadow-md overflow-hidden">
+              <nav className="flex">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`flex-1 px-4 py-3 font-medium text-center transition-colors ${
+                      activeTab === tab
+                        ? "text-purple-700 bg-purple-50 border-b-2 border-purple-400"
+                        : "text-slate-600 hover:text-slate-800 hover:bg-slate-50"
+                    }`}
+                  >
+                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  </button>
+                ))}
+              </nav>
+            </div>
 
-    {/* Buttons - only show if user is creator */}
-    {permissions.isCreator &&(
-      <div className="flex gap-3 sm:ml-6">
-        <button className="px-4 py-3 bg-[#1A103D] text-white rounded-xl font-medium hover:bg-black transition-colors">
-          + Create Post
-        </button>
-        <button className="px-4 py-3 bg-orange-300 text-slate-800 rounded-xl font-medium hover:bg-orange-400 transition-colors">
-          + Add Event
-        </button>
-      </div>
-    )}
+            {/* Buttons - only show if user is creator */}
+            {permissions.isCreator && (
+              <div className="flex gap-3 sm:ml-6">
+                <button className="px-4 py-3 bg-[#1A103D] text-white rounded-xl font-medium hover:bg-black transition-colors">
+                  + Create Post
+                </button>
+                <button className="px-4 py-3 bg-orange-300 text-slate-800 rounded-xl font-medium hover:bg-orange-400 transition-colors">
+                  + Add Event
+                </button>
+              </div>
+            )}
           </div>
         </div>
 

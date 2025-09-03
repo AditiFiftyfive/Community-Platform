@@ -16,7 +16,7 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
     { id: 'lgbtq', parentId: 'community', label: '🏳️‍🌈 LGBTQ+', color: 'bg-yellow-100 text-rainbow-700' },
     { id: 'womens-only', parentId: 'community', label: '👩 Womens Only', color: 'bg-pink-100 text-pink-700' },
     { id: 'mens-only', parentId: 'community', label: '👨 Mens Only', color: 'bg-blue-100 text-blue-700' },
-    { id: 'business-networking', parentId: 'crypto', label: '💼 Business Networking', color: 'bg-pink-100 text-gray-700' },
+    { id: 'business-networking', parentId: 'crypto', label: '💼 Networking', color: 'bg-pink-100 text-gray-700' },
     { id: 'social', parentId: 'community', label: '🗣️ Social', color: 'bg-green-100 text-green-700' },
     { id: 'book-club', parentId: 'arts-culture', label: '📚 Book Club', color: 'bg-amber-100 text-amber-700' },
     { id: 'wellness-child', parentId: 'wellness', label: '🧘 Wellness', color: 'bg-teal-100 text-teal-700' },

@@ -15,8 +15,6 @@ export const fetchCommunities = createAsyncThunk(
   }
 );
 
-
-
 const communitySlice = createSlice({
   name: "communities", // must match the key in store
   initialState: {
