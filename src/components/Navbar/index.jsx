@@ -21,7 +21,7 @@ const Navbar = () => {
   { to: "/tickets", icon: Ticket, label: "My Tickets" },
   { to: "/profile", icon: User, label: "My Profile" },
   { to: "/dashboard", icon: Grid, label: "Dashboard" },
-  { to: "/community", label: "Claim your Community" },
+  { to: "/community", label: "My Community" },
 ];
 
   // Close dropdown when clicking outside

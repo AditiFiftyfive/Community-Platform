@@ -5,7 +5,6 @@ import { slugify } from "../../../utils/slugify";
 
 const API_URL = "http://localhost:5000/Communities";
 
-// Thunk to fetch all communities
 export const fetchCommunities = createAsyncThunk(
   "communities/fetchAll",
   async () => {
@@ -41,20 +40,6 @@ const communitySlice = createSlice({
         builder: currentUser?.name || currentUser?.username,
       });
     },
-
-    removeCommunity: (state, action) => {
-      state.items = state.items.filter(c => c.id !== action.payload);
-    },
-    updateCommunity: (state, action) => {
-      const index = state.items.findIndex(c => c.id === action.payload.id);
-      if (index !== -1) {
-        state.items[index] = { ...state.items[index], ...action.payload };
-      }
-    },
-    clearCommunities: (state) => {
-      state.items = [];
-      state.error = null;
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -75,29 +60,6 @@ const communitySlice = createSlice({
       });
   }
 });
-
-
-export const selectUserCommunities = (state, currentUser) => {
-  if (!state.communities?.items || !currentUser) return [];
-
-  return state.communities.items.filter((community) => {
-    return (
-      community.builder === currentUser.name ||
-      community.builder === currentUser.username ||
-      community.createdBy === currentUser.id ||
-      community.userId === currentUser.id ||
-      currentUser.id === community.createdBy ||
-      currentUser.id === community.userId
-    );
-  });
-};
-
-
-export const selectHasCreatedCommunity = (state, currentUser) => {
-  const userCommunities = selectUserCommunities(state, currentUser);
-  return userCommunities.length > 0;
-};
-
 
 export const { addCommunity, removeCommunity, updateCommunity, clearCommunities } =
   communitySlice.actions;

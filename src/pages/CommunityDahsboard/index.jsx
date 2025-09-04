@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar";
-import showTabContent from "./showTabContent";
+import showTabContent from "./utils/showTabContent";
 import { useDispatch } from "react-redux";
 import { fetchCommunities } from "../../reduxTK/features/community/communitySlice";
-import { normalizeCommunityData, getImageSrc, useCommunityDashboard } from "./hooks";
+import { normalizeCommunityData, getImageSrc } from "./utils/normalizeCommunityData";
+import { useCommunityDashboard } from "./hooks/useCommunityDashboard";
 
 const CommunityDashboard = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const CommunityDashboard = () => {
     loading,
     error,
     tabs,
-    permissions
+    isCreator
   } = useCommunityDashboard();
 
   const displayCommunity = community || formDataFromState;
@@ -45,9 +46,7 @@ const CommunityDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       <Navbar />
 
-      {/* Header Section */}
       <div className="pt-20 pb-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Cover Image */}
         <div className="relative h-64 sm:h-80 rounded-2xl shadow-lg mb-8 overflow-hidden">
           {displayCommunity.coverImage ? (
             <img
@@ -65,10 +64,8 @@ const CommunityDashboard = () => {
           )}
         </div>
 
-        {/* Profile Info */}
         <div className="px-4 sm:px-6 -mt-16 relative space-y-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6">
-            {/* Profile Image */}
             <div>
               {displayCommunity.profileImage ? (
                 <img
@@ -83,7 +80,6 @@ const CommunityDashboard = () => {
               )}
             </div>
 
-            {/* Name + Description */}
             <div className="flex-1">
               <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 -mt-2 ">
                 {displayCommunity.communityName}
@@ -94,7 +90,6 @@ const CommunityDashboard = () => {
               <p className="text-slate-600 text-lg">{displayCommunity.description}</p>
           </div>
 
-          {/* Categories */}
           {displayCommunity.categories?.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {displayCommunity.categories.map((category, index) => (
@@ -108,7 +103,6 @@ const CommunityDashboard = () => {
             </div>
           )}
  
-          {/* Public Page Link */}
           <div className="bg-green-50 p-4 rounded-xl border border-green-100">
             <div className="flex items-center gap-3">
               <div className="text-2xl">🔗</div>
@@ -127,10 +121,8 @@ const CommunityDashboard = () => {
           </div>
         </div>
 
-        {/* Tabs + Actions */}
         <div className="mt-12 px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:justify-between sm:items-center">
-            {/* Tabs */}
             <div className="flex-1 bg-white rounded-xl shadow-md overflow-hidden">
               <nav className="flex">
                 {tabs.map((tab) => (
@@ -149,8 +141,7 @@ const CommunityDashboard = () => {
               </nav>
             </div>
 
-            {/* Buttons - only show if user is creator */}
-            {permissions.isCreator && (
+            {isCreator && (
               <div className="flex gap-3 sm:ml-6">
                 <button className="px-4 py-3 bg-[#1A103D] text-white rounded-xl font-medium hover:bg-black transition-colors">
                   + Create Post
