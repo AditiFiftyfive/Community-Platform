@@ -3,6 +3,6 @@ export const slugify = (text) =>
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, "-")      // spaces → dashes
-    .replace(/[^\w\-]+/g, "")  // remove non-word chars
-    .replace(/\-\-+/g, "-");   // collapse multiple -
+    .replace(/\s+/g, "-")      
+    .replace(/[^\w\-]+/g, "")  
+    .replace(/\-\-+/g, "-");   

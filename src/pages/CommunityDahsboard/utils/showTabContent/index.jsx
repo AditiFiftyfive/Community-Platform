@@ -13,7 +13,6 @@ export default function showTabContent(activeTab, formData) {
           </div> 
         </div> 
  
-        {/* Simple stats cards */} 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4"> 
           <div className="bg-pink-50 p-6 rounded-xl text-center border border-pink-100"> 
             <div className="text-3xl mb-2">👥</div> 

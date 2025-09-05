@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
           {/* Left: Logo + Links */}
           <div className="flex flex-col items-center md:items-start gap-6">
-            <div className="text-4xl font-bold">ThriveCircle</div>
+            <Link to="/" className="text-4xl font-bold">ThriveCircle</Link>
             <div className="flex flex-wrap justify-center md:justify-start gap-8 text-base font-semibold">
               <a href="#">Terms & Conditions</a>
               <a href="#">Privacy Policy</a>

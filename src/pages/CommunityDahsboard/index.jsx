@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import showTabContent from "./utils/showTabContent";
 import { useDispatch } from "react-redux";
 import { fetchCommunities } from "../../reduxTK/features/community/communitySlice";
-import { normalizeCommunityData, getImageSrc } from "./utils/normalizeCommunityData";
+import { getImageSrc } from "./utils/normalizeCommunityData";
 import { useCommunityDashboard } from "./hooks/useCommunityDashboard";
 
 const CommunityDashboard = () => {
@@ -22,8 +22,6 @@ const CommunityDashboard = () => {
     activeTab,
     setActiveTab,
     community,
-    loading,
-    error,
     tabs,
     isCreator
   } = useCommunityDashboard();
@@ -154,7 +152,6 @@ const CommunityDashboard = () => {
           </div>
         </div>
 
-        {/* Tab Content */}
         <div className="mt-8 px-4 sm:px-6 mb-12">
           <div className="bg-white rounded-2xl shadow-md p-6 sm:p-8">
             {showTabContent(activeTab, displayCommunity)}
