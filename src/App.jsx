@@ -1,23 +1,10 @@
 import './index.css'
-import { Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
-import DiscoverPage from './pages/DiscoverPage';
-import SignInPage from './pages/SignInPage';
-import SignUpPage from './pages/SignUpPage';
-import CreateCommunityPage from './pages/CreateCommunityPage';
-import CommunityDashboard from './pages/CommunityDahsboard';
+import AppRoutes  from './AppRoutes';
 
 export default function App() {
   return (
-    <div className="min-h-screen font-sans">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/discover" element={<DiscoverPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/create-thrivecircle" element={<CreateCommunityPage />} />
-        <Route path="/dashboard/:slug" element={<CommunityDashboard />} />
-      </Routes>
+    <div className="min-h-screen font-sans max-w-full w-full">
+      <AppRoutes />
     </div>
   );
 }

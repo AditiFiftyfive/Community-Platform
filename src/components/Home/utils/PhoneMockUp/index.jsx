@@ -2,16 +2,13 @@ import React from 'react'
 export { PhoneMockUp, TicketCard, ProfileCard, SocialProofBanner };
 
 
-// Phone Mockup Component
 const PhoneMockUp = () => {
   return (
     
     <div className="relative mt-8 sm:mt-10 md:mt-12">
       <div className="w-48 sm:w-56 md:w-64 h-[360px] sm:h-[420px] md:h-[480px] bg-black rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl mx-auto">
         <div className="w-full h-full bg-white rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] overflow-hidden">
-          {/* Phone Screen Content */}
           <div className="relative h-full">
-            {/* Status Bar */}
             <div className="flex justify-between items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-white">
               <div className="w-4 sm:w-5 h-1.5 sm:h-2 bg-black rounded-full"></div>
               <div className="text-xs font-semibold">9:41</div>
@@ -21,14 +18,11 @@ const PhoneMockUp = () => {
               </div>
             </div>
 
-            {/* App Interface */}
             <div className="px-2.5 sm:px-3 py-1.5 sm:py-2">
-              {/* Header */}
               <div className="flex items-center justify-between mb-2 sm:mb-3">
                 <div className="text-sm sm:text-base font-bold leading-none">Yoga with Swindells</div>
               </div>
 
-              {/* Event Card */}
               <div className="bg-gray-50 rounded-lg sm:rounded-xl p-2.5 sm:p-3 mb-2 sm:mb-3">
                 <div className="flex items-center space-x-1.5 sm:space-x-2 mb-1.5 sm:mb-2">
                   <div className="w-8 sm:w-10 h-8 sm:h-10 bg-orange-400 rounded-full flex items-center justify-center">
@@ -46,7 +40,6 @@ const PhoneMockUp = () => {
                 />
               </div>
 
-              {/* Navigation */}
               <div className="flex justify-around py-1">
                 <div className="text-center">
                   <div className="w-5 sm:w-6 h-5 sm:h-6 bg-orange-400 rounded-md sm:rounded-lg mx-auto mb-0.5"></div>
@@ -62,7 +55,6 @@ const PhoneMockUp = () => {
                 </div>
               </div>
 
-              {/* Event List */}
               <div className="space-y-1.5 sm:space-y-2 mt-1.5 sm:mt-2">
                 <div className="text-xs sm:text-sm font-semibold">Upcoming Events</div>
                 {[1, 2, 3].map((item) => (
@@ -81,7 +73,6 @@ const PhoneMockUp = () => {
         </div>
       </div>
 
-      {/* Floating elements around phone - Hidden on mobile, visible on larger screens */}
       <div className="hidden md:block absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-2 border">
         <div className="text-xs font-medium text-gray-700">Get Tickets</div>
         <div className="text-xs text-gray-500">Members only</div>
@@ -91,7 +82,6 @@ const PhoneMockUp = () => {
   );
 };
 
-// Ticket Card Component
 const TicketCard = () => {
   return (
     <div className="hidden lg:block absolute left-[-80px] xl:left-[-120px] top-1/2 transform -translate-y-1/2 translate-x-1/2">
@@ -122,10 +112,9 @@ const TicketCard = () => {
   );
 };
 
-// Profile Card Component
 const ProfileCard = () => {
   return (
-    <div className="hidden lg:block absolute right-0 bottom-0 transform translate-x-1/4 xl:translate-x-1/3 translate-y-1/4">
+    <div className="hidden lg:block absolute left-1/2 bottom-0 transform translate-x-0 xl:translate-x-1/6 translate-y-1/2">
       <div className="bg-white rounded-xl lg:rounded-2xl shadow-xl p-3 lg:p-4 w-60 lg:w-72 border">
         <div className="flex items-center justify-between mb-2 lg:mb-3">
           <div className="text-sm lg:text-base font-bold">Hosted by Charlie</div>
@@ -149,7 +138,6 @@ const ProfileCard = () => {
   );
 };
 
-// Social Proof Banner
 const SocialProofBanner = () => {
   const avatars = [
     'https://framerusercontent.com/images/zA7hg7OUnSahgBJcsn7HpCAtY.png',

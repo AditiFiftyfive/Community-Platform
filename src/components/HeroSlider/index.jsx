@@ -25,7 +25,6 @@ const HeroSlider = () => {
   fetchEvents();
 }, []);
 
-  // Auto-slide functionality
   useEffect(() => {
     if (!isAutoPlaying || events.length === 0) return;
     const interval = setInterval(
@@ -35,7 +34,6 @@ const HeroSlider = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, events.length]);
 
-  // Navigation
   const navigate = (direction) => {
     setCurrentSlide(prev =>
       direction === 'next'
@@ -44,7 +42,6 @@ const HeroSlider = () => {
     );
   };
 
-  // Pause autoplay when interacting
   const handleInteraction = () => {
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 10000);
@@ -70,7 +67,6 @@ const HeroSlider = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gray-900">
-      {/* Background */}
       <div className="absolute inset-0">
         <img
           src={current.bgImage}
@@ -79,21 +75,17 @@ const HeroSlider = () => {
         />
       </div>
 
-      {/* Main content */}
       <div className="relative z-10 flex items-center justify-between h-full px-8 lg:px-16">
         <div className="flex-1 max-w-2xl text-white">
-          {/* Category */}
           <div className="inline-block px-3 py-1 mb-4 text-sm font-medium bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
             {current.category}
           </div>
 
-          {/* Date */}
           <div className="flex items-center gap-2 mb-4 text-gray-200">
             <Calendar className="w-4 h-4" />
             <span className="text-lg">{current.date}</span>
           </div>
 
-          {/* Title */}
           <Link 
             to={`/community/${current.title.toLowerCase().replace(/\s+/g, "-")}`} 
             className="block text-5xl lg:text-7xl font-bold mb-4 leading-tight"
@@ -101,16 +93,13 @@ const HeroSlider = () => {
             {current.title}
           </Link>
 
-          {/* Subtitle */}
           <div className="flex items-center gap-2 mb-6 text-xl text-gray-300">
             <MapPin className="w-5 h-5" />
             <span>{current.subtitle}</span>
           </div>
 
-          {/* Price */}
           <div className="text-2xl font-semibold mb-8 text-cyan-300">{current.price}</div>
 
-          {/* Buttons */}
           <div className="flex gap-4">
             <button
               onClick={handleInteraction}
@@ -126,7 +115,6 @@ const HeroSlider = () => {
             </button>
           </div>
 
-          {/* Stats */}
           <div className="flex items-center gap-6 mt-8 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
@@ -138,7 +126,6 @@ const HeroSlider = () => {
         </div>
       </div>
 
-      {/* Arrows */}
       <button
         onClick={() => { navigate('previous'); handleInteraction(); }}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300"
@@ -152,7 +139,6 @@ const HeroSlider = () => {
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
         {events.map((_, index) => (
           <button

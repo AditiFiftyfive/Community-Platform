@@ -1,7 +1,6 @@
 import { Upload, X } from 'lucide-react';
 import React from 'react';
 
-// Section 3: Cover Image Upload Component
 const Section3CoverImage = ({ 
   formData = {}, 
   handleInputChange = () => {}, 
@@ -13,7 +12,6 @@ const Section3CoverImage = ({
 }) => {
   return (
     <>
-      {/* Cover Image Upload Area */}
       <div
         className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
           dragActive

@@ -1,7 +1,6 @@
 import { Upload, X } from 'lucide-react';
 import React from 'react';
 
-// Section 3: Profile Image Upload Component
 const Section3ProfileImage = ({ 
   formData = {}, 
   handleInputChange = () => {}, 
@@ -10,7 +9,6 @@ const Section3ProfileImage = ({
 }) => {
   return (
     <>
-      {/* Profile Picture Upload */}
       <div className="flex items-center space-x-4">
         <div className="relative">
           {formData.profileImage ? (

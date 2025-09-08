@@ -1,12 +1,9 @@
 import React from "react";
 
-// Right Section Component
 const RightSection = () => {
   return (
     <div className="relative h-full bg-gradient-to-br from-stone-200 to-stone-300 flex flex-col justify-center items-center p-12">
-      {/* Main content container */}
       <div className="max-w-2xl mx-auto text-center space-y-8">
-        {/* Image container */}
         <div className="relative">
           <div className="rounded-2xl overflow-hidden shadow-2xl">
             <img 
@@ -18,7 +15,6 @@ const RightSection = () => {
   
         </div>
         
-        {/* Testimonial content */}
         <div className="space-y-6">
           <h2 className="text-2xl text-gray-800 leading-relaxed">
             Thrive gave us a home. Our community finally has a space that feels like us.
@@ -31,7 +27,6 @@ const RightSection = () => {
           </div>
         </div>
         
-        {/* Decorative separator */}
         <div className="flex justify-center">
           <div className="w-px h-16 bg-gray-400"></div>
         </div>
@@ -42,7 +37,6 @@ const RightSection = () => {
               className="w-full h-96 object-cover"
             />
           </div>
-          {/* Testimonial content */}
         <div className="space-y-6">
           <h2 className="text-2xl text-gray-800 leading-relaxed">
             With Thrive, building our community finally felt effortless — and actually fun.

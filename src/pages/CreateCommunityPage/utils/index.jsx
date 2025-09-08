@@ -16,7 +16,6 @@ export const SECTION_CONFIG = {
   }
 };
 
-// Validation functions
 export const validateSection1 = (formData, isSignedIn, user) => {
   const errors = {};
   

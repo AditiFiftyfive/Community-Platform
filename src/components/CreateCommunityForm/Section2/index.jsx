@@ -1,7 +1,6 @@
 import { Check, AlertCircle } from 'lucide-react';
 import React from 'react';
 
-// Section 2: Community Details
 const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryToggle = () => {}, errors = {} }) => {
   const childCategories = [
     { id: 'special', parentId: 'ai', label: '✨ Special', color: 'bg-yellow-100 text-yellow-700' },
@@ -40,7 +39,6 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
 
   return (
     <>
-      {/* Community Name */}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">What's your community's name?*</label>
         <input
@@ -57,7 +55,6 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
         )}
       </div>
 
-      {/* Page Link */}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">Your community's unique page link*</label>
         <div className="flex items-center">
@@ -81,7 +78,6 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
         )}
       </div>
 
-      {/* Description */}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">Tell us a bit about your community</label>
         <textarea
@@ -92,7 +88,6 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
         />
       </div>
 
-      {/* Location */}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">Where's your community based?*</label>
         <select
@@ -111,7 +106,6 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
         )}
       </div>
 
-      {/* Categories */}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-3">Which categories best fit your community?*</label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -132,7 +126,6 @@ const Section2 = ({ formData = {}, handleInputChange = () => {}, handleCategoryT
         </div>
       </div>
 
-      {/* Terms */}
       <div className="text-xs text-gray-500 text-center">
         By agreeing to host this event, you accept Thrive's{' '}
         <a href="#" className="text-blue-600 hover:underline">Terms of Use</a>{' '}

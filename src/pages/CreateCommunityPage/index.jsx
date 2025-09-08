@@ -10,10 +10,7 @@ import { useDispatch } from "react-redux";
 import { addCommunity } from "../../reduxTK/features/community/communitySlice";
 import { useUser } from "@clerk/clerk-react";
 
-
-
 const CreateCommunityPage = () => {
-  // Custom hooks for clean state management
   const { formData, handleInputChange, handleCategoryToggle } = useFormData();
   const { errors, validateSection, clearError } = useFormValidation(formData);
   const { currentSection, nextSection: goNext, prevSection } = useFormNavigation();
@@ -29,7 +26,6 @@ const CreateCommunityPage = () => {
     }
   : null; 
   
-  // Drag and drop with error clearing
   const { dragActive, handleDrag, handleDrop, handleFileSelect } = useDragAndDrop(
     (field, file) => {
       handleInputChange(field, file);
@@ -37,13 +33,11 @@ const CreateCommunityPage = () => {
     }
   );
 
-  // Enhanced handlers that clear errors
   const handleInputWithClearError = (field, value) => {
     handleInputChange(field, value);
     clearError(field);
   };
 
-  // Navigation
   const nextSection = () => {
     if (validateSection(currentSection)) goNext();
   };
@@ -64,7 +58,6 @@ const handleSubmit = async () => {
       createdBy: currentUser?.id,
       creatorEmail: currentUser?.email,
       builder: currentUser?.name || currentUser?.username,
-      // 🔑 Convert File → blob URL before dispatch
       coverImage: formData.coverImage
         ? URL.createObjectURL(formData.coverImage)
         : null,
@@ -79,20 +72,17 @@ const handleSubmit = async () => {
   }
 };
 
-  // Get current section config
   const currentConfig = SECTION_CONFIG[currentSection];
   const isLastSection = currentSection === 3;
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        {/* Left side: form */}
         <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-r border-gray-200">
           <div className="h-full overflow-y-auto">
             <div className="min-h-screen flex flex-col justify-center p-8 lg:p-12">
               <div className="max-w-lg mx-auto w-full">
                 
-                {/* Navigation Header */}
                 <div className="flex flex-col items-start mb-8">
                   {currentSection > 1 && (
                     <button 
@@ -103,7 +93,6 @@ const handleSubmit = async () => {
                     </button>
                   )}
                   
-                  {/* Progress indicators */}
                   <div className="flex space-x-2">
                     {[1, 2, 3].map((step) => (
                       <div
@@ -117,9 +106,7 @@ const handleSubmit = async () => {
                   </div>
                 </div>
 
-                {/* Section Content */}
                 <div className="space-y-8">
-                  {/* Section Header */}
                   <div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">
                       {currentConfig.title}
@@ -129,7 +116,6 @@ const handleSubmit = async () => {
                     </p>
                   </div>
                   
-                  {/* Dynamic Section Content */}
                   {currentSection === 1 && (
                     <Section1 
                       formData={formData} 
@@ -187,7 +173,6 @@ const handleSubmit = async () => {
                   )}
                 </div>
                 
-                {/* Navigation Button */}
                 <button 
                   onClick={isLastSection ? handleSubmit : nextSection}
                   className="w-full mt-10 bg-black text-white py-4 px-8 rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
@@ -200,7 +185,6 @@ const handleSubmit = async () => {
           </div>
         </div>  
 
-        {/* Right side */}
         <div className="hidden lg:block">
           <RightSection />
         </div>

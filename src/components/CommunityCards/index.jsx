@@ -60,7 +60,6 @@ const CommunityCards = () => {
               key={c.id}
               className="w-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105"
             >
-              {/* Image + title */}
               <div className="relative h-48 sm:h-56 md:h-64">
                 <img src={c.image} alt={c.name} className="w-full h-full object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
@@ -81,7 +80,6 @@ const CommunityCards = () => {
                 </div>
               </div>
 
-              {/* Details */}
               <div className="p-4 sm:p-5 md:p-6">
                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                   <span
@@ -112,7 +110,6 @@ const CommunityCards = () => {
                   </div>
                 </div>
 
-                {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2"> 
                   <Link
                     to={`/dashboard/${c.slug}`} 

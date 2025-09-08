@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import Navbar from "../../components/Navbar";
 import showTabContent from "./utils/showTabContent";
 import { useDispatch } from "react-redux";
 import { fetchCommunities } from "../../reduxTK/features/community/communitySlice";
@@ -42,8 +41,6 @@ const CommunityDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
-      <Navbar />
-
       <div className="pt-20 pb-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative h-64 sm:h-80 rounded-2xl shadow-lg mb-8 overflow-hidden">
           {displayCommunity.coverImage ? (
@@ -141,10 +138,10 @@ const CommunityDashboard = () => {
 
             {isCreator && (
               <div className="flex gap-3 sm:ml-6">
-                <button className="px-4 py-3 bg-[#1A103D] text-white rounded-xl font-medium hover:bg-black transition-colors">
+                <button className="px-4 py-3 bg-[#92876F] text-white rounded-xl font-medium hover:bg-[#B7A196] transition-colors">
                   + Create Post
                 </button>
-                <button className="px-4 py-3 bg-orange-300 text-slate-800 rounded-xl font-medium hover:bg-orange-400 transition-colors">
+                <button className="px-4 py-3 bg-[#92876F] text-white rounded-xl font-medium hover:bg-[#B7A196] transition-colors">
                   + Add Event
                 </button>
               </div>

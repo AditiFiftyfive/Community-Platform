@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { validateSection1, validateSection2, validateSection3 } from '../utils';
 
-// Form data management
 export const useFormData = () => {
   const [formData, setFormData] = useState({
     existingPlatform: '',
@@ -31,7 +30,6 @@ export const useFormData = () => {
   return { formData, handleInputChange, handleCategoryToggle };
 };
 
-// Form validation
 export const useFormValidation = (formData) => {
   const [errors, setErrors] = useState({});
   const { isSignedIn, user } = useUser();
@@ -60,7 +58,6 @@ export const useFormValidation = (formData) => {
   return { errors, validateSection, clearError };
 };
 
-// Section navigation
 export const useFormNavigation = () => {
   const [currentSection, setCurrentSection] = useState(1);
 
@@ -75,7 +72,6 @@ export const useFormNavigation = () => {
   return { currentSection, nextSection, prevSection };
 };
 
-// Drag and drop functionality
 export const useDragAndDrop = (onFileSelect) => {
   const [dragActive, setDragActive] = useState(false);
   const dragCounterRef = useRef(0);

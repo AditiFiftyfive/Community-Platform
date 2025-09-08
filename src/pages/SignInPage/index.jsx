@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSignIn, useUser } from "@clerk/clerk-react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
-import AuthModal from "./../../components/AuthModal";
+import AuthModal from "../../components/SignUp/AuthModal";
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn();
@@ -67,7 +67,6 @@ const SignInPage = () => {
           </div>
         )}
 
-        {/* Email */}
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
             Email Address
@@ -86,7 +85,6 @@ const SignInPage = () => {
           </div>
         </div>
 
-        {/* Password */}
         <div className="mb-6">
           <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
             Password
@@ -116,17 +114,6 @@ const SignInPage = () => {
           </div>
         </div>
 
-        {/* Forgot password */}
-        <div className="text-right mb-6">
-          <button
-            type="button"
-            className="text-sm text-[#1A103D] hover:text-[#2a1d55] font-medium"
-          >
-            Forgot your password?
-          </button>
-        </div>
-
-        {/* Submit */}
         <button
           type="submit"
           disabled={loading || !email.trim() || !password}
@@ -142,8 +129,7 @@ const SignInPage = () => {
           )}
         </button>
 
-        {/* Sign Up link */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-">
           <p className="text-gray-600">
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-[#1A103D] hover:text-[#2a1d55] font-medium">
