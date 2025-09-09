@@ -41,7 +41,7 @@ const CommunityDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
-      <div className="pt-20 pb-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="pt-24 pb-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative h-64 sm:h-80 rounded-2xl shadow-lg mb-8 overflow-hidden">
           {displayCommunity.coverImage ? (
             <img

@@ -78,7 +78,7 @@ const handleSubmit = async () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-r border-gray-200">
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-r border-gray-200 pt-20">
           <div className="h-full overflow-y-auto">
             <div className="min-h-screen flex flex-col justify-center p-8 lg:p-12">
               <div className="max-w-lg mx-auto w-full">

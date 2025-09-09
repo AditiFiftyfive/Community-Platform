@@ -1,3 +1,4 @@
 node_modules
 auth_flow.md
 project_overview.md
+.env.local

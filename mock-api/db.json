@@ -261,8 +261,8 @@
     "location": "Jaipur, Rajasthan",
     "category": "WELLNESS",
     "subcategories": ["YOGA", "MEDITATION", "HEALTH"],
-    "image": "https://images.pexels.com/photos/8613313/pexels-photo-8613313.jpeg",
-    "coverImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop",
+    "coverImage": "https://images.pexels.com/photos/8613313/pexels-photo-8613313.jpeg",
     "builder": "Meera",
     "color": "bg-violet-500",
     "members": "3.1K"

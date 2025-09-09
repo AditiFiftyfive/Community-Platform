@@ -2,7 +2,7 @@ import React from "react";
 
 const RightSection = () => {
   return (
-    <div className="relative h-full bg-gradient-to-br from-stone-200 to-stone-300 flex flex-col justify-center items-center p-12">
+    <div className="relative h-full bg-gradient-to-br from-stone-200 to-stone-300 flex flex-col justify-center items-center p-12 pt-20">
       <div className="max-w-2xl mx-auto text-center space-y-8">
         <div className="relative">
           <div className="rounded-2xl overflow-hidden shadow-2xl">

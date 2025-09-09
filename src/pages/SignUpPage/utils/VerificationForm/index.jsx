@@ -1,23 +1,23 @@
-import React from 'react';
+import React from "react";
 import { ArrowLeft } from "lucide-react";
 
-const VerificationForm = ({ 
+const VerificationForm = ({
   email,
-  verificationCode, 
-  onCodeChange, 
-  onSubmit, 
-  onGoBack,
-  onResendCode,
-  loading, 
-  error, 
-  isCodeValid 
+  verificationCode,
+  loading,
+  error,
+  isCodeValid,
+  handleVerification,
+  handleResendCode,
+  handleCodeChange,
+  goBackToSignUp
 }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleVerification}>
       <div className="text-center mb-8">
         <button 
           type="button"
-          onClick={onGoBack}
+          onClick={goBackToSignUp}
           className="text-[#1A103D] hover:text-[#2a1d55] mb-4 inline-flex items-center transition-colors duration-200"
         >
           <ArrowLeft className="w-4 h-4 mr-1" />
@@ -39,15 +39,14 @@ const VerificationForm = ({
       )}
 
       <div className="mb-6">
-        <label htmlFor="verificationCode" className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Verification Code
         </label>
         <input
-          id="verificationCode"
           type="text"
           placeholder="Enter 6-digit code"
           value={verificationCode}
-          onChange={(e) => onCodeChange(e.target.value)}
+          onChange={(e) => handleCodeChange(e.target.value)}
           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1A103D] focus:border-[#1A103D] outline-none transition-all duration-200 text-center text-2xl tracking-widest"
           maxLength="6"
           required
@@ -71,7 +70,7 @@ const VerificationForm = ({
 
       <button
         type="button"
-        onClick={onResendCode}
+        onClick={handleResendCode}
         disabled={loading}
         className="w-full mt-4 text-[#1A103D] hover:text-[#2a1d55] font-medium py-2 transition-colors duration-200"
       >

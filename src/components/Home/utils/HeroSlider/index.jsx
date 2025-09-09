@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, Users, Calendar, MapPin } from 'lucide-react';
-import api from "../../api";
+import api from "../../../../api";
 
 
 const HeroSlider = () => {
